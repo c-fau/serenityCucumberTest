@@ -1,0 +1,33 @@
+plugins {
+    id("java")
+    id ("net.serenity-bdd.serenity-gradle-plugin") version "4.0.21"
+
+}
+
+group = "org.example"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(platform("org.junit:junit-bom:5.10.1"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation ("org.junit.platform:junit-platform-suite:1.10.1")
+    testImplementation 'org.junit.vintage:junit-vintage-engine:5.10.1'
+
+    testImplementation ("io.cucumber:cucumber-junit-platform-engine:7.14.0")
+
+    implementation "net.serenity-bdd:serenity-core:4.0.21"
+    implementation 'net.serenity-bdd:serenity-rest-assured:4.0.21'
+    implementation 'net.serenity-bdd:serenity-report-resources:4.0.21'
+    implementation "net.serenity-bdd:serenity-cucumber:4.0.21"
+}
+
+tasks.test {
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+    useJUnitPlatform()
+}
+gradle.startParameter.continueOnFailure = true
