@@ -24,6 +24,19 @@ dependencies {
     implementation 'net.serenity-bdd:serenity-report-resources:4.0.21'
     implementation "net.serenity-bdd:serenity-cucumber:4.0.21"
 }
+tasks.register('singleCucumber', Test){
+    dependsOn testClasses
+
+    include '**/CucumberTestRunner.class'
+    outputs.upToDateWhen { false }
+}
+tasks.register('parallelCucumber', Test){
+    dependsOn testClasses
+    useJUnitPlatform()
+
+    include '**/CucumberTestSuite.class'
+    outputs.upToDateWhen { false }
+}
 
 tasks.test {
     testLogging.showStandardStreams = true

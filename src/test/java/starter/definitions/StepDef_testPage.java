@@ -2,6 +2,7 @@ package starter.definitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.junit.jupiter.api.extension.ExtendWith;
 import pageObjects.testPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
